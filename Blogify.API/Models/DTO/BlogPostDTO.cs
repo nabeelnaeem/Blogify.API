@@ -1,6 +1,6 @@
-﻿namespace Blogify.API.Models.Domain
+﻿namespace Blogify.API.Models.DTO
 {
-    public class BlogPost
+    public class BlogPostDTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -11,6 +11,6 @@
         public DateTime PublishedDate { get; set; }
         public string Author { get; set; }
         public bool IsVisible { get; set; }
-        public ICollection<Category> Categories { get; set; }
+        public List<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
     }
 }
