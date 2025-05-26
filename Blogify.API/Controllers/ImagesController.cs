@@ -2,6 +2,7 @@
 using Blogify.API.Models.Domain;
 using Blogify.API.Models.DTO;
 using Blogify.API.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

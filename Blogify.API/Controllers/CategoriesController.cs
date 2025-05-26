@@ -2,6 +2,7 @@
 using Blogify.API.Models.Domain;
 using Blogify.API.Models.DTO;
 using Blogify.API.Repositories.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace Blogify.API.Controllers
         }
         // 
         [HttpPost]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequestDto request)
         {
             //Map Dto to Domain Model
@@ -84,6 +86,8 @@ namespace Blogify.API.Controllers
         // Put https://localhost:7293/api/Categories/{id}
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
+
         public async Task<IActionResult> EditCategory([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDto request)
         {
             //Convert to Domain Model
@@ -113,6 +117,8 @@ namespace Blogify.API.Controllers
         // Delete https://localhost:7293/api/Categories/{id}
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
+
         public async Task<IActionResult> DeleteCategory([FromRoute] Guid id)
         {
             var category = await categoryRepository.DeleteAsync(id);
